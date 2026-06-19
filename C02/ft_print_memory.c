@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 #include <unistd.h>
-#include <stdio.h>
 
 void	ft_print_hex(int *dec, int size);
 
@@ -56,6 +55,9 @@ void	ft_print_hex(int *dec, int size)
 	while (index < size)
 	{
 		store = dec[index];
+		// if (store < 0)
+		// 	store *= -1;
+		//printf("(%d, %c%c%c)", *dec, *dec, out[0], out[1]);
 		out[0] = hex[store / 16];
 		out[1] = hex[store % 16];
 		write(1, out, 2);
@@ -109,9 +111,13 @@ void	*ft_print_memory(void *addr, unsigned int size)
 	return (addr);
 }
 
+#include <stdlib.h>
+#include <string.h>
+#include <stdio.h>
+
 int main()
 {
-	char *str = "Bonjour les aminches	\n	c␇ est fou	tout	ce qu on peut faire avec	\n\nprint_memory\n\n\n	lol.lol\n ";
-	ft_print_memory((void *)str, 92);
+	char *str = "hell\no horsys\0 why\tdo\vyou think\r it is goot\f to go here\n\n\t\0";
+	ft_print_memory((void *)str, 59);
 }
 
